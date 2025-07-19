@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benimana Theophile - Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="cv-wrapper" id="cv-content">
+    <aside class="cv-sidebar">
+        <div class="cv-photo">
+            <img src="profile1.JPG" alt="Benimana Theophile - Profile Photo" class="profile-img">
+        </div>
+        <div class="cv-section">
+            <h3>Skills</h3>
+            <ul id="skills" class="cv-list"></ul>
+        </div>
+        <div class="cv-section">
+            <h3>Education</h3>
+            <ul id="education" class="cv-list"></ul>
+        </div>
+        <div class="cv-section">
+            <h3>Languages</h3>
+            <ul id="languages" class="cv-list"></ul>
+        </div>
+        <div class="cv-section">
+            <h3>Interests</h3>
+            <ul id="interests" class="cv-list"></ul>
+        </div>
+    </aside>
+    <main class="cv-main">
+        <h1 id="name"></h1>
+        <h2 id="title"></h2>
+        <section>
+            <h3>About Me</h3>
+            <p id="about"></p>
+        </section>
+        <section>
+            <h3>Projects</h3>
+            <ul id="projects" class="cv-list"></ul>
+        </section>
+        <section>
+            <h3>Contact Information</h3>
+            <ul class="cv-list contact-list">
+                <li><strong>Phone:</strong> <span id="phone"></span></li>
+                <li><strong>Email:</strong> <span id="email"></span></li>
+                <li><strong>LinkedIn:</strong> <a id="linkedin" href="#" target="_blank">Benimana Theophile</a></li>
+            </ul>
+        </section>
+        <a href="#" class="btn" id="download-cv">Download My CV</a>
+        <footer id="cv-footer">
+            &copy; 2025 Benimana Theophile. All rights reserved.
+        </footer>
+    </main>
+</div>
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+// Interests example
+const interests = ["Blockchain Technologies", "Sailing", "Web 3.0", "Sustainability"];
+const interestsUl = document.getElementById('interests');
+if (interestsUl) {
+    interests.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        interestsUl.appendChild(li);
+    });
+}
+// PDF download
+document.getElementById('download-cv').addEventListener('click', function(e) {
+    e.preventDefault();
+    // Hide button and footer for PDF
+    document.getElementById('download-cv').style.display = 'none';
+    document.getElementById('cv-footer').style.display = 'none';
+    // Export only the main CV content
+    html2pdf().set({
+        margin: 0,
+        filename: 'theophile-cv.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    }).from(document.getElementById('cv-content')).save().then(() => {
+        // Restore button and footer after export
+        document.getElementById('download-cv').style.display = '';
+        document.getElementById('cv-footer').style.display = '';
+    });
+});
+</script>
+</body>
+</html>

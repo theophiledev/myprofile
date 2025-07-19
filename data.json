@@ -1,0 +1,42 @@
+{
+    "name": "Benimana Theophile",
+    "title": "IT Graduate | Networking & Web Developer",
+    "about": "Hello, my name is Benimana Theophile, a final-year IT student at RP IPRC Ngoma.\r\nI’m passionate about using technology to solve real-life problems in agriculture, education, and health.\r\nI've worked on a machine learning model to detect plant diseases and helped develop a digital student meal management system.\r\nI enjoy learning new tools and collaborating with others to build smart solutions.\r\nI’m now looking for opportunities like internships or entry-level roles to grow my skills and contribute to innovative projects.",
+    "education": [
+        "A2 in Networking — Completed",
+        "A1 in Information Technology — Completed",
+        "certificate pending"
+    ],
+    "skills": [
+        "Networking (LAN\/WAN",
+        "IP Configuration)",
+        "Web Development (HTML",
+        "CSS",
+        "PHP",
+        "Java",
+        "JSP)",
+        "Database Management (MySQL)",
+        "Linux Server Administration",
+        "IoT Projects using Arduino & Raspberry Pi",
+        "Cybersecurity basics",
+        "Hardware & Software Troubleshooting",
+        "AI(python)",
+        "Tensorflow",
+        "Flask"
+    ],
+    "projects": [
+        "Plant Disease Detection using AI & IoT",
+        "Digital Student Meal Management System",
+        "Smart environment & security System with Raspberry pi Pico",
+        "Automatic Teller Condom (ATC)"
+    ],
+    "languages": [
+        "Kinyarwanda (Native)",
+        "English (Spoken & Written – Intermediate)"
+    ],
+    "contact": {
+        "phone": "+250 782858743",
+        "email": "btbenimana@gmail.com",
+        "linkedin": "https:\/\/linkedin.com\/in\/theophile250"
+    }
+}

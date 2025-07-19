@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="cv-wrapper">
+    <aside class="cv-sidebar">
+        <div class="cv-photo">
+            <img src="profile1.JPG" alt="Profile Photo" class="profile-img">
+        </div>
+        <div class="cv-section">
+            <h3>Skills</h3>
+            <ul id="sidebar-skills" class="cv-list"></ul>
+        </div>
+        <div class="cv-section">
+            <h3>Education</h3>
+            <ul id="sidebar-education" class="cv-list"></ul>
+        </div>
+        <div class="cv-section">
+            <h3>Languages</h3>
+            <ul id="sidebar-languages" class="cv-list"></ul>
+        </div>
+        <div class="cv-section">
+            <h3>Interests</h3>
+            <ul id="sidebar-interests" class="cv-list"></ul>
+        </div>
+    </aside>
+    <main class="cv-main">
+        <div class="container">
+            <h2>Update Profile Information</h2>
+            <form id="profileForm" action="update.php" method="POST">
+                <div class="form-fields">
+            <label>Name:<br><input type="text" name="name" id="name" required class="form-input"></label><br><br>
+            <label>Title:<br><input type="text" name="title" id="title" required class="form-input"></label><br><br>
+            <label>About:<br><textarea name="about" id="about" rows="4" required class="form-input"></textarea></label><br><br>
+            <label>Education (comma separated):<br><input type="text" name="education" id="education" required class="form-input"></label><br><br>
+            <label>Skills (comma separated):<br><input type="text" name="skills" id="skills" required class="form-input"></label><br><br>
+            <label>Projects (comma separated):<br><input type="text" name="projects" id="projects" required class="form-input"></label><br><br>
+            <label>Languages (comma separated):<br><input type="text" name="languages" id="languages" required class="form-input"></label><br><br>
+            <label>Phone:<br><input type="text" name="phone" id="phone" required class="form-input"></label><br><br>
+            <label>Email:<br><input type="email" name="email" id="email" required class="form-input"></label><br><br>
+            <label>LinkedIn URL:<br><input type="url" name="linkedin" id="linkedin" required class="form-input"></label><br><br>
+        </div>
+                <button type="submit" class="btn">Update Profile</button>
+            </form>
+            <p class="note">* Changes will update your profile instantly.</p>
+        </div>
+    </main>
+</div>
+<script>
+// Fetch current data and pre-fill form and sidebar
+fetch('data.json')
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('name').value = data.name;
+        document.getElementById('title').value = data.title;
+        document.getElementById('about').value = data.about;
+        document.getElementById('education').value = data.education.join(', ');
+        document.getElementById('skills').value = data.skills.join(', ');
+        document.getElementById('projects').value = data.projects.join(', ');
+        document.getElementById('languages').value = data.languages.join(', ');
+        document.getElementById('phone').value = data.contact.phone;
+        document.getElementById('email').value = data.contact.email;
+        document.getElementById('linkedin').value = data.contact.linkedin;
+
+        // Sidebar population
+        const fillSidebar = (id, items) => {
+            const ul = document.getElementById(id);
+            ul.innerHTML = '';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+        };
+        fillSidebar('sidebar-skills', data.skills);
+        fillSidebar('sidebar-education', data.education);
+        fillSidebar('sidebar-languages', data.languages);
+        // Example interests
+        fillSidebar('sidebar-interests', ["Blockchain Technologies", "Sailing", "Web 3.0", "Sustainability"]);
+    });
+</script>
+</body>
+</html>
